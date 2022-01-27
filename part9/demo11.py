@@ -12,4 +12,3 @@ print('我的名字叫{0},今年{1}岁了'.format(name, age))  # 方法
 
 '''py3中使用f-string来格式化字符串'''
 print(f'我的名字叫{name},今年{age}岁了')
-

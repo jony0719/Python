@@ -11,4 +11,3 @@ d = {item.upper(): price for item, price in zip(items, prices)}
 print(d)
 
 '''如果两个列表元素的数目不相等，会出现什么情况'''
-

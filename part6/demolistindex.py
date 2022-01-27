@@ -8,4 +8,3 @@ print(lst.index('hello'))
 # print(lst.index('python'))
 # print(lst.index('hello', 1, 3))
 print(lst.index('hello', 1, 4))
-

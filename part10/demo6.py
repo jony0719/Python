@@ -29,6 +29,8 @@ print('hello', 'world', 'java')
 
 def fun2(*args1, **args2):
     pass
+
+
 # def fun3(**args1,*args2):
 #   pass
 

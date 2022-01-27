@@ -9,4 +9,3 @@ print(lst[1], lst[-2])
 
 '''获取索引为10的元素'''
 # print(lst[10])    # IndexError: list index out of range
-
