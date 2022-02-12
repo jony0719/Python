@@ -216,7 +216,39 @@ def modify():
 
 
 def sort():
-    pass
+    show()
+    if os.path.exists(filename):
+        with open(filename, 'r', encoding='utf-8') as rfile:
+            student_list = rfile.readlines()  # 将读取到的学生信息保存在列表中
+        student_new = []
+        for item in student_list:
+            d = dict(eval(item))
+            student_new.append(d)
+
+    else:
+        return
+    asc_or_desc = input('请选择(0.升序 1.降序):')
+    if asc_or_desc == '0':
+        asc_or_desc_bool = False
+    elif asc_or_desc == '1':
+        asc_or_desc_bool = True
+    else:
+        print('您的输入有误，请重新输入')
+        sort()
+    mode = input('请输入排序方式(1.按英语成绩排序 2.按Python成绩排序 3.按Java成绩排序 0.按总成绩排序:')
+    if mode == '1':
+        student_new.sort(key=lambda x: int(x['english']), reverse=asc_or_desc_bool)
+    elif mode == '2':
+        student_new.sort(key=lambda x: int(x['python']), reverse=asc_or_desc_bool)
+    elif mode == '3':
+        student_new.sort(key=lambda x: int(x['java']), reverse=asc_or_desc_bool)
+    elif mode == '0':
+        student_new.sort(key=lambda x: int(x['english']) + int(x['python']) + int(x['java']),
+                         reverse=asc_or_desc_bool)
+    else:
+        print('您的输入有误，请重新输入！！！')
+        sort()
+    show_student(student_new)
 
 
 def total():
