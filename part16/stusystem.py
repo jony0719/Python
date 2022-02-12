@@ -92,7 +92,61 @@ def sava(lst):
 
 
 def search():
-    pass
+    student_query = []  # 定义列表，因为存在同名学生放在列表当中
+    while True:
+        id = ''
+        name = ''
+        if os.path.exists(filename):  # 如果学生存在，判断根据id还是姓名查找
+            mode = input('按ID查找请输入1,按姓名查找请输入2')
+            if mode == '1':
+                id = input('请输入学生的ID:')
+            elif mode == '2':
+                name = input('请输入学生的姓名:')
+            else:
+                print('您输入的有误，请重新输入')
+                search()  # 输入有误后，重新查找学生信息
+            with open(filename, 'r', encoding='utf-8') as rfile:
+                student = rfile.readlines()  # 读取所有的信息放入student列表中
+                for item in student:  # 遍历列表
+                    d = dict(eval(item))  # 将字符串转换为字典类型
+                    if id != '':
+                        if d['id'] == id:
+                            student_query.append(d)  # 如果id不为空且id查找到，将id到student_query列表当中
+                    elif name != '':
+                        if d['name'] == name:
+                            student_query.append(d)  # 如果name空，将name到student_query列表中
+            # 显示查询结果
+            show_student(student_query)
+            # 清空列表
+            student_query.clear()
+            answer = input('是否要继续查询？y/n\n')
+            if answer == 'y':
+                continue
+            else:
+                break
+
+        else:
+            print('暂未保存学生信息！！！')
+            return
+
+
+def show_student(lst):
+    if len(lst) == 0:
+        print('没有查询到学生信息，无数据显示！！！')
+        return
+    # 定义标题显示格式
+    format_title = '{:^6}\t{:^12}\t{:^8}\t{:^10}\t{:^10}\t{:^8}'
+    print(format_title.format('ID', '姓名', '英语成绩', 'python成绩', 'java成绩', '总成绩'))
+    # 定义内容的显示格式
+    format_data = '{:^6}\t{:^12}\t{:^8}\t{:^8}\t{:^8}\t{:^8}'
+    for item in lst:
+        print(format_data.format(item.get('id'),
+                                 item.get('name'),
+                                 item.get('english'),
+                                 item.get('python'),
+                                 item.get('java'),
+                                 int(item.get('english')) + int(item.get('python')) + int(item.get('java'))
+                                 ))
 
 
 def delete():
