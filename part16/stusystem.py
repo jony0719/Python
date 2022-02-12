@@ -232,7 +232,16 @@ def total():
 
 
 def show():
-    pass
+    student_lst = []
+    if os.path.exists(filename):
+        with open(filename, 'r', encoding='utf-8') as rfile:
+            students = rfile.readlines()
+            for item in students:
+                student_lst.append(eval(item))
+                if student_lst:
+                    show_student(student_lst)
+    else:
+        print('暂未保存过数据。。。')
 
 
 if __name__ == '__main__':
