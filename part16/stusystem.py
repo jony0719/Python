@@ -136,7 +136,7 @@ def show_student(lst):
         return
     # 定义标题显示格式
     format_title = '{:^6}\t{:^12}\t{:^8}\t{:^10}\t{:^10}\t{:^8}'
-    print(format_title.format('ID', '姓名', '英语成绩', 'Python成绩', 'Java成绩', '总成绩'))
+    print(format_title.format('学生ID', '姓名', '英语成绩', 'Python成绩', 'Java成绩', '总成绩'))
     # 定义内容的显示格式
     format_data = '{:^6}\t{:^12}\t{:^8}\t{:^8}\t{:^8}\t{:^8}'
     for item in lst:
