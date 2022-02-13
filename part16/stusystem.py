@@ -96,8 +96,8 @@ def search():
     while True:
         id = ''
         name = ''
-        if os.path.exists(filename):  # 如果学生存在，判断根据id还是姓名查找
-            mode = input('按ID查找请输入1,按姓名查找请输入2')
+        if os.path.exists(filename):  # 如果文件存在，判断根据id还是姓名查找
+            mode = input('1.按ID查找 2.按姓名查找')
             if mode == '1':
                 id = input('请输入学生的ID:')
             elif mode == '2':
@@ -264,14 +264,14 @@ def total():
 
 
 def show():
-    student_lst = []
+    student_lst = []  # 用于保存学生列表的列表
     if os.path.exists(filename):
         with open(filename, 'r', encoding='utf-8') as rfile:
-            students = rfile.readlines()
+            students = rfile.readlines()  # 将读取到的学生信息放入students中
             for item in students:
                 student_lst.append(eval(item))
-                if student_lst:
-                    show_student(student_lst)
+            if student_lst:  # 当学生列表不为空，显示所有学生信息
+                show_student(student_lst)
     else:
         print('暂未保存过数据。。。')
 
