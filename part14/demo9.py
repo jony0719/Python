@@ -8,3 +8,5 @@ import calc
 # 在使用from...import可以导入包、模块、函数、变量
 from package1 import module_A
 from package1.module_A import a
+
+print(a)
